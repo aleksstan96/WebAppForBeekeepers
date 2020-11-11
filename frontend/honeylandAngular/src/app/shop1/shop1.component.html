@@ -1,0 +1,413 @@
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar bg-dark">
+    <div class="container">
+
+        <!-- Brand -->
+        <a *ngIf='role=="b"' href="pcelar" class="navbar-brand text-white naslov ">Honeyland <span class="iconify dark"
+                data-icon="mdi-bee-flower" data-inline="false" style="color: dark;" data-width="30"
+                data-height="30"></span></a>
+
+         <a  *ngIf='role=="c"' href="shop" class="navbar-brand text-white naslov ">Honeyland <span class="iconify dark"
+              data-icon="mdi-bee-flower" data-inline="false" style="color: dark;" data-width="30"
+              data-height="30"></span></a>
+    
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active">
+            <a class="nav-link waves-effect" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li> -->
+                <!-- <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Free download</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free tutorials</a>
+          </li> -->
+            </ul>
+
+            <!-- Right -->
+            <ul  class="navbar-nav nav-flex-icons ">
+              <li *ngIf='role=="c"' class="nav-item">
+                <a class="nav-link waves-effect" href="/../cart">
+                <span class="badge red z-depth-1 mr-1 mb-1"> {{myCart.length}} </span>
+                <i class="fas fa-shopping-cart text-warning mr-1"></i>
+                <span class="clearfix d-none d-sm-inline-block text-warning"> Cart </span>
+                </a>
+             </li>
+     <!--      <li class="nav-item">
+            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li> -->
+                <li *ngIf='role=="b"' class="nav-item active">
+                    <a class="nav-link waves-effect text-warning" href="http://localhost:4200/pcelar">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link waves-effect text-warning" href="http://localhost:4200/kupac">Events
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li *ngIf='role=="c"' class="nav-item active">
+                    <a class="nav-link waves-effect text-warning" href="http://localhost:4200/history">History
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" (click)='logout()' class="nav-link" style='align-self: center;' data-toggle="modal"
+                        data-target="#sign-out">
+                        <div style="color: rgb(185, 55, 42);">Logout <i class="fas fa-sign-out-alt  fa-lg"></i></div>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+<!-- Navbar -->
+
+<!--Carousel Wrapper-->
+<div id="carousel-example-1z" class="carousel slide carousel-fade pt-4 bg-dark" data-ride="carousel">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+        <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner bg-dark" role="listbox">
+
+        <!--First slide-->
+        <div class="carousel-item active">
+            <div class="view"
+                style="background-image: url('/../assets/images/slide4.jpg'); background-repeat: no-repeat; background-size: cover; ">
+
+                <!-- Mask & flexbox options-->
+                <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+                    <!-- Content -->
+                    <div class="text-center white-text mx-5 wow fadeIn">
+                        <h1 class="mb-4">
+                            <strong>Welcome to our Webshop!</strong>
+                        </h1>
+
+                        <p>
+                            <strong>Buy our super healthy and natural products</strong>
+                        </p>
+
+                        <p class="mb-4 d-none d-md-block">
+                            <strong>Our beekeepers are the best on the market, always trying hard to make great products
+                                that will help you to stay healthy.</strong>
+                        </p>
+
+                        <!-- <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start free tutorial
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a> -->
+                    </div>
+                    <!-- Content -->
+
+                </div>
+                <!-- Mask & flexbox options-->
+
+            </div>
+        </div>
+        <!--/First slide-->
+
+        <!--Second slide-->
+        <div class="carousel-item">
+            <div class="view"
+                style="background-image: url('/../assets/images/slide1.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+                <!-- Mask & flexbox options-->
+                <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+                    <!-- Content -->
+                    <div class="text-center white-text mx-5 wow fadeIn">
+                        <h1 class="mb-4">
+                            <strong>Honey</strong>
+                        </h1>
+
+                        <!-- <p>
+                <strong>Best & free guide of responsive web design</strong>
+              </p> -->
+
+                        <p class=" d-none d-md-block">
+                            <strong>Honey is the complex substance made when the nectar and sweet deposits from plants
+                                and trees are gathered, modified and stored in the honeycomb by honey bees as a food
+                                source for the colony. All living species of bees have had their honey gathered by
+                                indigenous peoples for consumption. For commercial purposes, only the European honey bee
+                                & the Asian honey bee have been harvested substantially. Honey is sometimes also
+                                gathered by humans from the nests of various native stingless bees though this is
+                                typically in much smaller quantities.</strong>
+                        </p>
+
+                        <!-- <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start free tutorial
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a> -->
+                    </div>
+                    <!-- Content -->
+
+                </div>
+                <!-- Mask & flexbox options-->
+
+            </div>
+        </div>
+        <!--/Second slide-->
+
+        <!--Third slide-->
+        <div class="carousel-item">
+            <div class="view"
+                style="background-image: url('/../assets/images/slide2.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+                <!-- Mask & flexbox options-->
+                <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+                    <!-- Content -->
+                    <div class="text-center white-text mx-5 wow fadeIn">
+                        <h1 class="mb-4">
+                            <strong>A study in Macro</strong>
+                        </h1>
+
+                        <!-- <p>
+                <strong>Best & free guide of responsive web design</strong>
+              </p> -->
+
+                        <p class=" d-none d-md-block">
+                            <strong>The worker honey bee is an infertile female bee. First of all, she represents the majority of her colony’s population, probably as much 99%, and as a result is the most easily recognisable of all the bees. Therefore she is the bee you are most likely to see flying and visiting flowers. She conducts most of her duties in and out of the hive including:                             
+                                 housekeeper, undertaker, nurse, tends to the queen, processes nectar, fans the hive, produces beeswax,     
+                                  hive guard, forager.
+
+                                </strong>
+                        </p>
+
+                        <!-- <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start free tutorial
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a>
+            </div> -->
+                        <!-- Content -->
+
+                    </div>
+                    <!-- Mask & flexbox options-->
+
+                </div>
+            </div>
+            <!--/Third slide-->
+
+
+
+        </div>
+        <!--/.Slides-->
+
+        <!--Controls-->
+        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!--/.Controls-->
+
+    </div>
+    <!--/.Carousel Wrapper-->
+
+    <!--Main layout-->
+    <main class="bg-dark">
+        <div class="container ">
+
+            <!--Navbar-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-warning lighten-3  mb-5">
+
+                <!-- Navbar brand -->
+                <span class="navbar-brand">Categories:</span>
+
+                <!-- Collapse button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto pt-1">
+                        <li class="nav-item " [ngClass]='{"active": currCategory=="All"}'>
+                            <a class="nav-link" (click)='setCategory("All")'>All
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item " [ngClass]='{"active": currCategory=="Honey"}'>
+                            <a class="nav-link"  (click)='setCategory("Honey")'>Honey
+                                
+                            </a>
+                        </li>
+                        <li class="nav-item" [ngClass]='{"active": currCategory=="Propolis"}'>
+                            <a class="nav-link" (click)='setCategory("Propolis")'>Propolis</a>
+                        </li>
+                        <li class="nav-item" [ngClass]='{"active": currCategory=="Pollen"}'>
+                            <a class="nav-link"  (click)='setCategory("Pollen")'>Pollen</a>
+                        </li>
+                        <li class="nav-item" [ngClass]='{"active": currCategory=="Royal Jelly"}'>
+                            <a class="nav-link"  (click)='setCategory("Royal Jelly")'>Royal Jelly</a>
+                        </li>
+                        <li class="nav-item" [ngClass]='{"active": currCategory=="Beeswax"}'>
+                            <a class="nav-link"  (click)='setCategory("Beeswax")'>Beeswax</a>
+                        </li>
+                        <li class="nav-item" [ngClass]='{"active": currCategory=="Other"}'>
+                            <a class="nav-link"  (click)='setCategory("Other")'>Other</a>
+                        </li>
+
+                    </ul>
+                    <!-- Links -->
+
+                    <form class="form-inline">
+                        <div class="md-form my-0">
+                            <input class="form-control mr-sm-2" #myInput type="text" placeholder="Search" #myInput (keyup.enter)="getProductsByName(myInput.value)" aria-label="Search">
+                        </div>
+                    </form>
+                </div>
+                <!-- Collapsible content -->
+
+            </nav>
+            <!--/.Navbar-->
+
+
+            <!--Section: Products v.3-->
+            <section class="text-center mb-4">
+
+
+                 <!--Grid row-->
+                 <div class="row wow fadeIn">
+
+                    <!--Grid column-->
+                    <div *ngFor='let p of products ;let  i=index' class="col-lg-3 col-md-6 mb-4">
+
+                        <!--Card-->
+                        <div class="card" >
+
+                            <!--Card image-->
+                            <div class="view overlay" (click)='redirect(p.id)'>
+                                <img  [(src)]="p.slikaShow" width="258px" height="170px"
+                                    class="card-img-top" alt="No Image Available">
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                            <!--Card image-->
+
+                            <!--Card content-->
+                            <div class="card-body text-center">
+                                <!--Category & Title-->
+                              <h5>  <strong>
+                                    <a href="{{p.id}}/product" class="grey-text">
+                                    {{p.naziv}}
+                                    </a>
+                                </strong>
+                              </h5>
+                                <h5 class="dark-grey-text">
+                                    <strong>
+                                      By: <a  href='/../pcelardetails/{{p.pcelar?.id }}'>  {{p.pcelar?.ime}} {{p.pcelar?.prezime}}</a>
+                                        
+                                    </strong>
+                                </h5>
+
+                                <h5  class="grey-text">
+                                    {{p.cena}} din
+                                </h5>
+
+                                <form *ngIf='p.kolicina>0 && role=="c" ' class="d-flex justify-content-left my-2">
+                                    <!-- Default input -->
+                                    <input type="number" min="1" value="1" #kolicina0 aria-label="Search" class="form-control mr-1" style="width: 60px">
+                                    <button (click)='addToCart(p, kolicina0.value ,p.kolicina)' class="btn btn-warning btn-sm my-0 p" type="submit">Add to Cart
+                                      <i class="fas fa-shopping-cart ml-1"></i>
+                                    </button>
+                                   
+                                   
+                                  </form>
+                                  <p *ngIf='message && messageId==p.id' style="color: red;">
+                                   
+                                    {{message}}
+                                </p>
+                                
+                                  <h5 *ngIf='p.kolicina==0  && role=="c"' class="text-danger  my-3" style=" font-weight: 100;  ">
+                                    OUT OF STOCK
+                                  </h5> 
+                
+                                  <!--Rejting-->
+                                  <div class="container"> 
+                                    <ng-template #t let-fill="fill">
+                                      <span class="star" [class.full]="fill === 100">
+                                        <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+                                      </span>
+                                    </ng-template>
+                                    
+                                    <ngb-rating [(rate)]="p.ocena" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+                                    
+                                    <pre>Rating: <b *ngIf='p.ocena!=0'>{{p.ocena}}</b> <b *ngIf='p.ocena==0'> No ratings</b></pre>
+                                  </div>
+                
+
+                            </div>
+                            <!--Card content-->
+
+                        </div>
+                        <!--Card-->
+
+                    </div>
+                    <!--Grid column-->
+
+
+                </div>
+                <!--Grid row-->
+
+                 <!-- if products empty then display a message-->
+                 <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    No products found.
+                </div>
+
+
+            </section>
+            <!--Section: Products v.3-->
+
+
+            <!--Pagination-->
+            <nav  class="d-flex justify-content-center wow fadeIn pb-5">
+                <div style="text-align: center;">
+                    <ngb-pagination [(page)]='thePageNumber' [pageSize]='thePageSize'
+                        [collectionSize]='theTotalElements'
+                        (pageChange)='getProductsByCategory()'>
+
+                    </ngb-pagination>
+                </div>
+            </nav>
+            <!--Pagination-->
+
+        </div>
+    </main>
+    <!--Main layout-->

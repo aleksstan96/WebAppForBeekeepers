@@ -1,0 +1,24 @@
+<div class="container-fluid" style="box-sizing: content-box; width:100%;">
+    <div class="container" style="min-height: 100%; background-color: transparent;">
+        <div  style="flex-direction: row; flex-wrap: wrap;align-items: center; align-content: stretch;text-align: center; padding-top: 0.5cm;">
+            <h2 > Number of orders in last 30 days</h2>
+        </div>
+        
+
+        <div class="chart-wrapper">
+            <canvas baseChart 
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+            
+        </canvas>
+        </div>
+
+    </div>
+
+
+</div>
+

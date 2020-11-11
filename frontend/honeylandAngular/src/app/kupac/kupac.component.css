@@ -1,0 +1,63 @@
+html,
+body,
+header,
+.carousel {
+  height: 60vh;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .carousel {
+    height: 100vh;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+  html,
+  body,
+  header,
+  .carousel {
+    height: 100vh;
+  }
+}
+.view,body,html{height:100%}.carousel{height:50%}.carousel .carousel-inner,.carousel .carousel-inner .active,.carousel .carousel-inner .carousel-item{height:100%}@media (max-width:776px){.carousel{height:100%}}.page-footer{background-color:#929FBA}
+
+
+.naslov{
+    font-family: Brush Script Std,  cursive;
+    font-size: 170%;
+    color: white;
+  }
+
+  ngb-pagination ::ng-deep a {
+    color: white !important;
+  }
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link {
+    border-color: black;
+    background-color: rgb(255, 193, 7);
+  }
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link:focus, .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+  }
+  
+  ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+  }
+
+
+  select.form-control {
+    color: rgba(104, 95, 95, 0.473);
+   background-color: rgb(255, 187, 51);
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+  }
+
+  .card-common:hover {
+    box-shadow: 10px 10px 15px rgb(248, 222, 135);
+    transform: translateY(-1px);
+  }
+

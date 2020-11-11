@@ -1,0 +1,289 @@
+<body>
+
+    <div class="bg">
+
+        <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+                <div class="user_card">
+                    <div class="d-flex justify-content-center">
+                        <div class="brand_logo_container">
+                            <span class="iconify" data-icon="mdi:bee-flower" data-inline="false" style="color: white;"
+                                data-width="100" data-height="100"></span>
+                            <div class="naslov">Honeyland</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center form_container">
+                        <form>
+                            <div *ngIf="clicked1 && korisnikNijePronadjen" class="alert alert-danger form-group">
+                                Incorrect username or password.
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" #username='ngModel' required [(ngModel)]='user.username'
+                                    name="username" class="form-control input_user" placeholder="username">
+
+                            </div>
+                            <div *ngIf="username.invalid &&  clicked1" class="alert alert-danger "
+                                style="height: 35px ;margin-top: -1rem;">
+
+                                <div *ngIf="username.errors?.required">
+                                    Enter your username.
+                                </div>
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" #password='ngModel' required [(ngModel)]='user.password'
+                                    name="password" class="form-control input_pass" placeholder="password">
+                            </div>
+                            <div *ngIf="password.invalid &&  clicked1" class="alert alert-danger"
+                                style="height: 35px ;margin-top: -0.5rem;">
+
+                                <div *ngIf="password.errors?.required">
+                                    Enter your password.
+                                </div>
+                            </div>
+                            <!-- <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <select [(ngModel)]='user.role' name="" class="form-control input_pass" value="" placeholder="password">
+                                    <option value="Beekeeper">Beekeeper</option>
+                                    <option value="Customer"></option>
+                                    <option value='Admin'>Admin</option>
+                                </select>
+                            </div> -->
+
+                            <div class="d-flex justify-content-center mt-3 login_container">
+                                <button type="submit" name="button" class="btn login_btn"
+                                    (click)='login()'>Login</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-center links">
+                            Don't have an account?<a (click)='showRegisterModal()' class="ml-2 text-primary">Sign Up</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+
+<!--registration modal -->
+<div bsModal #registerModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="dialog-child-name">
+    <div class="modal-dialog ">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h4 id="dialog-child-name" class="modal-title ml-1 ">Registration Form</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideRegisterModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row centered-form">
+                        <!-- <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4"> -->
+                        <div class="panel panel-default text-dark">
+
+                            <div class="panel-body">
+                                <div *ngIf="clicked && razliciteLozinke" class="alert alert-danger form-group">
+                                    Confirmed password is different from original.
+                                </div>
+                                <div *ngIf="usernamePostoji && clicked" class="alert alert-danger form-group">
+                                    This username already exists, please choose another one.
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" [(ngModel)]="regUser.ime" placeholder="First Name"
+                                                #name="ngModel" required class="form-control input-sm">
+                                            <div *ngIf="name.invalid &&  clicked" class="alert alert-danger">
+
+                                                <div *ngIf="name.errors?.required">
+                                                    Enter your first name.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" [(ngModel)]="regUser.prezime" #prezime="ngModel"
+                                                placeholder="Last Name" required class="form-control input-sm">
+
+                                            <div *ngIf="prezime.invalid && clicked" class="alert alert-danger">
+
+                                                <div *ngIf="prezime.errors?.required">
+                                                    Enter your last name.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" [(ngModel)]="regUser.username" #kime="ngModel"
+                                                placeholder="Username" required class="form-control input-sm">
+                                            <div *ngIf="kime.invalid && clicked" class="alert alert-danger">
+
+                                                <div *ngIf="kime.errors?.required">
+                                                    Enter username.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <select required #role [(ngModel)]='regUser.role'
+                                                class="form-control input_pass">
+                                                <option disabled value="null">User Type</option>
+                                                <option value="Beekeeper">Beekeeper</option>
+                                                <option value="Customer">Customer</option>
+                                                <option value='Admin'>Admin</option>
+                                            </select>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" placeholder="Password" [(ngModel)]="regUser.password"
+                                                #passwordd="ngModel" required [pattern]="regex"
+                                                class="form-control input-sm">
+                                            <div *ngIf="passwordd.invalid &&  clicked" class="alert alert-danger">
+
+                                                <div *ngIf="passwordd.errors?.required">
+                                                    Enter password.
+                                                </div>
+                                                <div *ngIf="passwordd.errors?.pattern">
+                                                    Password must contain at least 8 characters: at least 1 uppercase
+                                                    letter, 1 lowercase letter, and 1 number.
+                                                    Can contain special characters.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" [(ngModel)]="passwordReplica"
+                                                placeholder="Confirm password" (input)="razliciteLozinke=false"
+                                                #potvrda="ngModel" required class="form-control input-sm">
+                                            <div *ngIf="potvrda.invalid &&  clicked" class="alert alert-danger">
+
+                                                <div *ngIf="potvrda.errors?.required">
+                                                    Enter password confirmation.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="date" placeholder="Date of Birth"
+                                                [(ngModel)]="regUser.datumRodjenja" #datum="ngModel" required
+                                                class="form-control input-sm">
+                                            <div *ngIf="datum.invalid && clicked" class="alert alert-danger">
+
+                                                <div *ngIf="datum.errors?.required">
+                                                    Enter date of birth.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Address" [(ngModel)]="regUser.adresa"
+                                                #mesto="ngModel" required class="form-control input-sm">
+                                            <div *ngIf="(mesto.invalid ) && clicked" class="alert alert-danger">
+
+                                                <div *ngIf="mesto.errors?.required">
+                                                    Enter address.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="tel" placeholder="Phone Number" [(ngModel)]="regUser.telefon"
+                                                #telefon="ngModel" required class="form-control input-sm">
+                                            <div *ngIf="telefon.invalid  && clicked" class="alert alert-danger">
+
+                                                <div *ngIf="telefon.errors?.required">
+                                                    Enter phone number.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" placeholder="Email" [(ngModel)]="regUser.email"
+                                                #email="ngModel" required class="form-control input-sm">
+                                            <div *ngIf="email.invalid && clicked" class="alert alert-danger">
+
+                                                <div *ngIf="email.errors?.required">
+                                                    Enter email address.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div style="text-align: center; justify-content: center;">
+                                    <re-captcha (resolved)="resolved($event)"
+                                        siteKey="6LftOAEVAAAAAFj_IqRXBdwb9OLTFh9h8TlCDoI8"></re-captcha>
+                                </div>
+                                <br>
+
+                                <div align="center" class='text-white'>
+                                    Already have an account?<a href="login">
+                                        Sign in
+                                    </a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="hideRegisterModal()">Cancel</button>
+                <button type="button" class="btn btn-warning"
+                    (click)="save(name.errors?.required, prezime.errors?.required,kime.errors?.required,passwordd.errors?.required,potvrda.errors?.required,datum.errors?.required,mesto.errors?.required, telefon.errors?.required, email.errors?.required, passwordd.errors?.regex)">Register</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end of edit modal -->

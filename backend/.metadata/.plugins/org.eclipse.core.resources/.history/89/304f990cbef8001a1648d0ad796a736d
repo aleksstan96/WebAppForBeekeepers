@@ -1,0 +1,83 @@
+package com.example.demo.controllers;
+
+import java.math.BigDecimal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.example.demo.dao.PcelarRepository;
+import com.example.demo.dao.ProizvodRepository;
+import com.example.demo.entity.Pcelar;
+import com.example.demo.entity.Proizvod;
+
+@RepositoryRestController
+public class ProizvodController {
+	
+	@Autowired
+	private PcelarRepository pcelarRepo;
+	
+	@Autowired
+	private ProizvodRepository proizvodRepo;
+	
+//private String info;
+//	
+//	private String naziv;
+//	
+//	private int cena;
+//	
+//	private int kolicina;
+//	
+//	private String slikaUrl;
+//	
+//	private String kategorija;
+//	
+//	
+//	private BigDecimal ocena;
+//	
+//	private int brOcena;
+//	
+	@RequestMapping(method = RequestMethod.GET, value = "/proizvodi/update/{id}/{pcelarId}/{naziv}/{info}/{cena}/{kolicina}/{slikaUrl}/{kategorija}/{ocena}/{brOcena}")
+	public ResponseEntity<?> updatePcelinjacki(@PathVariable Long id, @PathVariable Long pcelarId,  @PathVariable String naziv, @PathVariable int cena,
+												@PathVariable String info, @PathVariable int kolicina,@PathVariable String slikaUrl, @PathVariable String kategorija, 
+												@PathVariable BigDecimal ocena, @PathVariable int brOcena ){
+		
+		
+		Pcelar pcelar = pcelarRepo.findById(pcelarId).get();
+		Proizvod proizvod = proizvodRepo.findById(id).get();
+		
+		
+		proizvod.setPcelar(pcelar);
+	
+		proizvod.setNaziv(naziv);
+		proizvod.setInfo(info);
+		proizvod.setBrOcena(brOcena);
+		proizvod.setCena(brOcena);
+		proizvod.setKategorija(kategorija);
+		proizvod.setKolicina(kolicina);
+		proizvod.setOcena(ocena);
+		proizvod.setSlikaUrl(slikaUrl);
+		
+		proizvodRepo.save(proizvod); 
+		return ResponseEntity.ok(HttpStatus.ACCEPTED);
+		
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/proizvodi/delete/{id}")
+	public ResponseEntity<?> deleteproizvodi(@PathVariable Long id){
+		
+		
+		Proizvod proizvod = proizvodRepo.findById(id).get();
+		
+		
+		
+		proizvodRepo.delete(proizvod); 
+		return ResponseEntity.ok(HttpStatus.ACCEPTED);
+		
+	}
+
+}

@@ -1,0 +1,429 @@
+<!-- cards -->
+
+<div class="container-fluid text-dark" style="min-height: 100%; max-height: 100%; box-sizing: content-box; width:100%">
+
+  <div class="row mt-3 mb-3 ml-5 ">
+    <div class="col-8"></div>
+    <div class="col-3 ">
+      <button class='btn btn-lg btn-warning ml-4 card-common' (click)='showDodajPcelinjakModal()'>
+        Add Apiary
+      </button>
+    </div>
+  </div>
+  <!-- <div class="col-12"> -->
+  <div *ngFor='let p of pcelinjaci;let i = index' class="row " style="display: flex;">
+    <div class="col-12 my-3 ml-5">
+      <!-- <div [ngClass]="{'row pt-md-5 mt-md-3 mb-2': i==0, 'row mt-md-2': i!=0}" class="row mt-md-4"> -->
+      <div class="row ">
+        <div class="col-10 p-2 ">
+          <div class="card card-common" style="height: 300px; background-image: url(/../assets/images/sace1.jpg);">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <div class="col-xl-8 col-sm-8 p-0 ">
+                  <div class="col-xl-12 col-sm-12 p-2 dark"
+                    style="background-color:rgba(223, 175, 73, 0.88); border-radius: 5px ; color: dark">
+                    <div class="row ml-1">
+                      <div class="col-xl-9 col-sm-2 pt-2 pl-2">
+                        <h1>{{p.naziv}}</h1>
+                      </div>
+                      <div class="col-xl-1 col-sm-1 pt-2 ">
+                        <i class="fas fa-edit little-button" (click)='showEditModal(p)' style="font-size:large;"></i>
+                        <!-- <i class="far fa-trash-alt mr-1" style="font-size: x-large;"></i> -->
+                      </div>
+                      <div class="col-xl-1 col-sm-1 pt-2">
+                        <!-- <i class="fas fa-edit mr-4" style="font-size: x-large;"></i>  -->
+                        <i class="far fa-trash-alt  little-button" (click)='showDeleteModal(p)'
+                          style="font-size:large"></i>
+                      </div>
+                    </div>
+                    <div class="row ml-1">
+                      <div class="col-xl-9 col-sm-9 pl-2">
+                        <p style="font-size: large;">{{p.lokacija}}</p>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row ml-1">
+                      <div class="col-xl-9 col-sm-9 pl-2  pb-2">
+                        <h4 style="font-weight: 400;">Hives details</h4>
+                        <p style="font-size: large;   margin-bottom: 0%; margin-top: 10px;">Last checkup: <small
+                            style="color:#c0392b;">5 days ago</small> </p>
+                        <p style="font-size: large;   margin-bottom: 0%; margin-top: 10px;">Number of hives: <small
+                            style="color:#c0392b;">{{p.brojKosnica}}</small> </p>
+                      </div>
+                      <button type="button" (click)="showChildModal(p)" class="btn btn-warning btn-lg card-common1">
+                        <i style="font-size:15px;" class="fas fa-archive"></i><i style="font-size:20px;"
+                          class="fas fa-archive"></i><i style="font-size: 15px;" class="fas fa-archive "></i>
+
+                      </button>
+                      <!-- <div class="col-xl-3 col-sm-3 pt-4 text-center">
+                          <div class="card card-common1" (click)="showChildModal(p)"
+                            style="width: 60px; height: 60px ; align-items: center;  border-radius: 5px ; color: rgba(255,255,255,0.9)">
+                            <div class="pt-2">
+                              <i style="font-size:15px;" class="fas fa-archive"></i><i style="font-size:20px;"
+                                class="fas fa-archive"></i><i style="font-size: 15px;" class="fas fa-archive "></i>
+                              <p class="text-center"><small>More info</small></p>
+                            </div>
+                          </div>
+
+                        </div> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-sm-3 p-0">
+                  <app-weather [lokacija]='p.lokacija'></app-weather>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <nav class="d-flex justify-content-center wow fadeIn pb-2 pt-5">
+    <div style="text-align: center;">
+        <ngb-pagination [(page)]='thePageNumber' [pageSize]='thePageSize'
+            [collectionSize]='theTotalElements'
+            (pageChange)='dohvatiPcelinjake()'>
+
+        </ngb-pagination>
+    </div>
+</nav>
+
+</div>
+
+
+
+<!-- end of cards -->
+
+
+
+<!--edit modal -->
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+  <div class="modal-dialog ">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title ml-1">Apiary Info</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideEditModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            Apiary Name
+            <input type="text" [(ngModel)]="currEditPcelinjak.naziv" class="form-control input-sm">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            Number of Hives
+            <input type="number" [(ngModel)]="currEditPcelinjak.brojKosnica" class="form-control input-sm">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            Location
+            <input type="text" [(ngModel)]="currEditPcelinjak.lokacija" class="form-control input-sm">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="hideEditModal()">Cancel</button>
+        <button type="button" class="btn btn-warning" (click)="saveEditedPcelinjak()">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- end of edit modal -->
+
+<!--delete modal -->
+<div bsModal #deleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+  <div class="modal-dialog ">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title ml-1">Delete Apiary</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideDeleteModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete {{currDeletePcelinjak.naziv}}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="hideDeleteModal()">Cancel</button>
+        <button type="button" class="btn btn-warning" (click)="deletePcelinjak()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- end of delete modal -->
+
+
+<!--add modal -->
+<div bsModal #addModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+  <div class="modal-dialog ">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title ml-1">Add Apiary</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideDodajPcelinjakModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            Apiary Name
+            <input type="text" [(ngModel)]="currAddPcelinjak.naziv" class="form-control input-sm">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            Number of Hives
+            <input type="number" [(ngModel)]="currAddPcelinjak.brojKosnica" class="form-control input-sm">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            Location
+            <input type="text" [(ngModel)]="currAddPcelinjak.lokacija" class="form-control input-sm">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="hideDodajPcelinjakModal()">Cancel</button>
+        <button type="button" class="btn btn-warning" (click)="dodajPcelinjak()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- end of add modal -->
+
+<!--child modal-->
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title ml-5">Apiary Info</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <!--Section: Products v.3-->
+        <section class="text-center mb-4 ml-5">
+          <span>
+            <!--Grid row-->
+            <div *ngFor='let in of counter(gridDuzina) ;let i = index' class="row">
+              <div *ngFor='let in of counter(gridSirina) ;let j = index'>
+                <!--Grid column 1-->
+
+                <div class="col-lg-1 col-md-1 mb-1 text-center">
+                  <!--Card-->
+                  <div class="card card-common text-center">
+                    <!--Card content-->
+                    <div class="card-body text-center ml-4">
+                      <div class="row" style="color: rgb(255, 204, 0);">
+                        <i class="fas fa-archive fa-2x card-common" (click)='kosnicaEdit(i*10+j)'></i>
+                      </div>
+                      <div class="row " style="justify-content: center;">
+                        {{i*10+j+1}}
+                      </div>
+                    </div>
+                    <!--Card content-->
+                  </div>
+                  <!--Card-->
+                </div>
+
+                <!--Grid column 1-->
+              </div>
+            </div>
+            <div class="row">
+              <div *ngFor='let in of counter(gridOstatak + 1) ;let i = index'>
+                <!--Grid column 1-->
+                <div *ngIf='i<gridOstatak' class="col-lg-1 col-md-1 mb-1 text-center">
+                  <!--Card-->
+                  <div class="card card-common">
+                    <!--Card content-->
+                    <div class="card-body text-center ml-4 ">
+                      <div class="row" style="color: rgb(255, 204, 0);">
+                        <i class="fas fa-archive fa-2x card-common "
+                          (click)='kosnicaEdit(gridDuzina*gridSirina + i)'></i>
+                      </div>
+                      <div class="row " style="justify-content: center; ">
+
+                        {{gridDuzina*gridSirina + i + 1}}
+                      </div>
+                    </div>
+                    <!--Card content-->
+                  </div>
+                  <!--Card-->
+                </div>
+                <!--Grid column 1-->
+                <!--Grid column 1-->
+                <div *ngIf='i==gridOstatak' class="col-lg-1 col-md-1 mb-1 text-center">
+                  <!--Card-->
+                  <div class="card card-common">
+                    <!--Card content-->
+                    <div class="card-body text-center ml-4 ">
+                      <div class="row" style="color: rgb(255, 204, 0);">
+                        <i class="fas fa-plus fa-3x card-common-plus " (click)='kosnicaAdd()'></i>
+                      </div>
+
+                    </div>
+                    <!--Card content-->
+                  </div>
+                  <!--Card-->
+                </div>
+                <!--Grid column 1-->
+              </div>
+            </div>
+          </span>
+        </section>
+        <!--Section: Products v.3-->
+
+        <!--Section: edit kosnica-->
+        <section class="text-left mb-4 ml-5" *ngIf='currKosnica!=-1 && !addFlag'>
+          <hr>
+          <h4>Hive {{currKosnica+1}} Details </h4>
+          <hr style="background-color: white; margin-left: -4rem; margin-right: -1rem;">
+
+
+          <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  Type
+                  <select class="form-control" id="vrstaKosnice" [(ngModel)]='currEditKosnica.vrsta'>
+                    <option value="The Langstroth Hive">The Langstroth Hive</option>
+                    <option value="The Long Horizontal Hive">The Long/Horizontal Hive</option>
+                    <option value="The Warre Hive">The Warre Hive</option>
+                    <option value="Top Bar Hive">Top Bar Hive</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  Hive Size
+                  <input type="number" [(ngModel)]="currEditKosnica.velicinaLegla" class="form-control input-sm">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  Temperature (°C)
+                  <input type="number" [(ngModel)]="currEditKosnica.temperatura" placeholder="°C"
+                    class="form-control input-sm">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  Size of Feeder (kg)
+                  <input type="number" [(ngModel)]="currEditKosnica.velicinaHranilice" class="form-control input-sm">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  Age of Queen Bee
+                  <input type="number" [(ngModel)]="currEditKosnica.starostMatice" class="form-control input-sm">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  General Condition
+                  <textarea [(ngModel)]='currEditKosnica.opsteStanje' class="form-control input-sm"></textarea>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+        <!--End of section: edit kosnica-->
+
+        <!--Section: add kosnica-->
+        <section class="text-left mb-4 ml-5" *ngIf='addFlag'>
+          <hr>
+          <h4>Add Hive </h4>
+          <hr style="background-color: white; margin-left: -4rem; margin-right: -1rem;">
+
+
+          <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  Type
+                  <select class="form-control" id="vrstaKosnice" (value)='currAddKosnica.vrsta'>
+                    <option value="The Langstroth Hive">The Langstroth Hive</option>
+                    <option value="The Long Horizontal Hive">The Long/Horizontal Hive</option>
+                    <option value="The Warre Hive">The Warre Hive</option>
+                    <option value="Top Bar Hive">Top Bar Hive</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  Hive Size
+                  <input type="number" [(ngModel)]="currAddKosnica.velicinaLegla" class="form-control input-sm">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  Temperature (°C)
+                  <input type="number" [(ngModel)]="currAddKosnica.temperatura" placeholder="°C"
+                    class="form-control input-sm">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  Size of Feeder (kg)
+                  <input type="number" [(ngModel)]="currAddKosnica.velicinaHranilice" class="form-control input-sm">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  Age of Queen Bee
+                  <input type="number" [(ngModel)]="currAddKosnica.starostMatice" class="form-control input-sm">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  General Condition
+                  <textarea [(ngModel)]='currAddKosnica.opsteStanje' class="form-control input-sm"></textarea>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+        <!--End of section: add kosnica-->
+
+      </div>
+      <div class="modal-footer">
+        <button *ngIf='currKosnica!=-1 && !addFlag' type="button" class="btn btn-danger" style="margin-right: 850px;"
+          (click)="kosnicaDelete()">Delete Hive {{currKosnica+1}}</button>
+        <button type="button" class="btn btn-danger" (click)="hideChildModal()">Cancel</button>
+        <button type="button" class="btn btn-warning" (click)="save()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--end of child modal-->

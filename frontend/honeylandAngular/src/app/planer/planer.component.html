@@ -1,0 +1,129 @@
+<div class="container-fluid " style="display: flex;">
+    <!-- <div class="row"> -->
+    <div class="row" style="box-sizing:content-box; width: 100%; margin-left: -2.75rem; margin-right: -0.5rem">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 " style="box-sizing:content-box; width: 100%;">
+
+            <!-- <div class="row pt-md-4 mt-md-3 mb-5"> -->
+
+            <div class="control-section" style="box-sizing:content-box; width: 100%;">
+                <ejs-schedule *ngIf='flag' #scheduleObj width='113%' height='600px' [eventSettings]="eventObject"
+                    (actionBegin)="onActionBegin($event)" (eventRendered)="onEventRendered($event)"
+                    [showQuickInfo]="showQuickInfo">
+                    <e-views>
+                        <e-view option="Day" startHour='05:00' endHour='22:00'></e-view>
+                        <e-view option="Week" isSelected='true' startHour='05:00' endHour='22:00'>
+                        </e-view>
+                        <e-view option="WorkWeek"></e-view>
+                        <e-view option="Month" showWeekNumber='true'>
+
+                            <ng-template #eventTemplate let-data>
+
+
+                                <!-- [ngClass]="{'feeding': data.Status=='Feeding', 'migration': data.Status=='Migration'}" -->
+                                <div style="padding-top: 2px; padding-left: 65px;">
+                                    <span *ngIf="data.Status=='Feeding'"><i class="fas fa-vial">
+                                        </i></span>
+                                    <span *ngIf="data.Status=='Migration'"><i class="fas fa-caravan"></i> </span>
+                                    <span *ngIf="data.Status=='Inspection'"><i class="fas fa-search"></i> </span>
+                                    <span *ngIf="data.Status=='Treatment'"><i class="fas fa-briefcase-medical">
+                                        </i></span>
+                                    <span *ngIf="data.Status=='Honey extraction'"><i class="fas fa-tint">
+                                        </i></span>
+                                    <span *ngIf="data.Status=='Pollination'"><span class="iconify" data-icon="mdi:flower-poppy" data-inline="false" style="color: white;"></span></span>
+                                    <span *ngIf="data.Status=='MyEvent'"><i class="fas fa-users"></i></span>
+                                    <span *ngIf="data.Status=='Task'"><i class="fas fa-thumbtack"></i>
+                                        </span>
+                                </div>
+
+
+
+
+                            </ng-template>
+
+                        </e-view>
+                        <!-- <e-view option="Agenda"></e-view> -->
+                    </e-views>
+
+                    <ng-template #editorTemplate let-data>
+                        <table *ngIf="data != undefined" class="custom-event-editor" width="100%" cellpadding="5">
+                            <tbody>
+                                <!-- <tr>
+                      <td class="e-textlabel">Apiary</td>
+                      <td colspan="4">
+                          <input id="Subject" class="e-field e-input" type="text" value="{{data.Subject}}"
+                              name="Subject" style="width: 100%"  />
+                      </td>
+                  </tr> -->
+                                
+                                <tr>
+                                    <td class="e-textlabel">Category</td>
+                                    <td colspan="4">
+                                        <ejs-dropdownlist id='Status' #status1 required class="e-field" data-name="Status"
+                                            placeholder='Choose event category' [dataSource]='CategoryData'
+                                            [fields]='categoryFields' value='{{data.Status}}'  >
+                                        </ejs-dropdownlist>
+                                    </td>
+                                </tr>
+                                <tr *ngIf='status1.value=="MyEvent"'>
+                                    <td class="e-textlabel">Subject</td>
+                                    <td colspan="4">
+                                        <textarea id='Subject'  name="Subject"  class="e-field e-input" rows="1"
+                                            placeholder='Subject' 
+                                           value='{{data.Subject}}'>
+                                        </textarea>
+                                    </td>
+                                </tr>
+                                <tr *ngIf='status1.value!="MyEvent"'>
+                                    <td class="e-textlabel">Apiary</td>
+                                    <td colspan="4">
+                                        <ejs-dropdownlist id='Subject' class="e-field" name="Subject"
+                                            placeholder='Choose apiary' [dataSource]='SubjectData'
+                                            [fields]='subjectFields' value='{{data.Subject}}'>
+                                        </ejs-dropdownlist>
+                                    </td>
+                                </tr>
+                                       
+                                <tr>
+                                    <td class="e-textlabel">From</td>
+                                    <td colspan="4">
+                                        <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime"
+                                            format="M/dd/yy h:mm a"
+                                            [value]="dateParser(data.startTime || data.StartTime)">
+                                        </ejs-datetimepicker>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="e-textlabel">To</td>
+                                    <td colspan="4">
+                                        <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime"
+                                            format="M/dd/yy h:mm a" [value]='dateParser(data.endTime || data.EndTime)'>
+                                        </ejs-datetimepicker>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="e-textlabel">Location</td>
+                                    <td colspan="4">
+                                        <textarea id="Location" class="e-field e-input" name="Location" rows="3"
+                                            cols="50" value="{{data.Location}}"
+                                            style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="e-textlabel">Description</td>
+                                    <td colspan="4">
+                                        <textarea id="Description" class="e-field e-input" name="Description" rows="3"
+                                            cols="50" value="{{data.Description}}"
+                                            style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </ng-template>
+                </ejs-schedule>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

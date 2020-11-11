@@ -1,0 +1,23 @@
+package com.example.demo.dao;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.demo.entity.Subscription;
+
+@CrossOrigin
+@RepositoryRestResource(collectionResourceRel  = "subscriptions",  path = "subscriptions")
+public interface SubscriptionRepository extends JpaRepository<Subscription, Long> {
+	
+	public String deleteByUser1IdAndUser2Id(@RequestParam("id1") Long id1, @RequestParam("id2") Long id2);
+	
+	public Page<Subscription> findByUser1Id(@RequestParam("id") Long id, Pageable pageable);
+	
+	public Page<Subscription> findByUser2Id(@RequestParam("id") Long id, Pageable pageable);
+	
+	public Page<Subscription> findByUser1IdAndUser2Id(@RequestParam("id1") Long id1, @RequestParam("id2") Long id2, Pageable pageable);
+}

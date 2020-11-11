@@ -1,0 +1,318 @@
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar bg-dark">
+    <div class="container">
+
+        <!-- Brand -->
+        <a *ngIf='role=="b"' href="pcelar" class="navbar-brand text-white naslov ">Honeyland <span class="iconify dark"
+            data-icon="mdi-bee-flower" data-inline="false" style="color: dark;" data-width="30"
+            data-height="30"></span></a>
+
+     <a  *ngIf='role=="c"' href="shop" class="navbar-brand text-white naslov ">Honeyland <span class="iconify dark"
+          data-icon="mdi-bee-flower" data-inline="false" style="color: dark;" data-width="30"
+          data-height="30"></span></a>
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active">
+            <a class="nav-link waves-effect" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li> -->
+                <!-- <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Free download</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free tutorials</a>
+          </li> -->
+            </ul>
+
+            <!-- Right -->
+            <ul  class="navbar-nav nav-flex-icons ">
+              <li *ngIf='role=="c"' class="nav-item">
+                <a class="nav-link waves-effect" href="/../cart">
+                <span class="badge red z-depth-1 mr-1 mb-1"> {{myCart.length}} </span>
+                <i class="fas fa-shopping-cart text-warning mr-1"></i>
+                <span class="clearfix d-none d-sm-inline-block text-warning"> Cart </span>
+                </a>
+             </li>
+     <!--      <li class="nav-item">
+            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li> -->
+          <li *ngIf='role=="b"' class="nav-item active">
+            <a class="nav-link waves-effect text-warning" href="http://localhost:4200/pcelar">Home
+                <span class="sr-only">(current)</span>
+            </a>
+        </li>
+                <li class="nav-item active">
+                    <a class="nav-link waves-effect text-warning" href="http://localhost:4200/shop">Shop
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li *ngIf='role=="c"' class="nav-item active">
+                    <a class="nav-link waves-effect text-warning" href="http://localhost:4200/history">History
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" (click)='logout()' class="nav-link" style='align-self: center;' data-toggle="modal"
+                        data-target="#sign-out">
+                        <div style="color: rgb(185, 55, 42);">Logout <i class="fas fa-sign-out-alt  fa-lg"></i></div>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+<!-- Navbar -->
+
+<!--Carousel Wrapper-->
+<div id="carousel-example-1z" class="carousel slide carousel-fade pt-4 bg-dark" data-ride="carousel">
+
+    <div class="view"
+    style="background-image: url('/../assets/images/degustation.jpg'); background-repeat: no-repeat; background-size: cover; ">
+     <!-- Mask & flexbox options-->
+     <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+        <!-- Content -->
+        <div class="text-center white-text mx-5 wow fadeIn">
+            <h1 class="mb-4">
+                <strong>Follow our beekeepers and attend their events!</strong>
+            </h1>
+
+            <p>
+                <strong>Join our community, always stay updated and see what is new on the market </strong>
+            </p>
+
+            <p class="mb-4 d-none d-md-block">
+                <strong>Free degustations, fairs, seminars and many other different events. Come and spend some nice time with us!</strong>
+            </p>
+
+
+        </div>
+        <!-- Content -->
+    </div>
+
+    </div>
+    
+</div>
+<!--/.Carousel Wrapper-->
+
+
+ <!--Main layout-->
+ <main class="bg-dark">
+    <div class="container " >
+
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-warning  lighten-3  mb-5">
+
+            <!-- Navbar brand -->
+            <!-- <span class="navbar-brand">Categories:</span> -->
+            
+
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                <!-- Links -->
+                <!-- <ul class="navbar-nav  mr-auto pt-1">
+                    <li class="nav-item " [ngClass]='{"active": currCategory=="All"}'>
+                        <a class="nav-link" (click)='setCategory("All")'>All
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item " [ngClass]='{"active": currCategory=="Degustation"}'>
+                        <a class="nav-link"  (click)='setCategory("Degustation")'>Degustation
+                            
+                        </a>
+                    </li>
+                    <li class="nav-item" [ngClass]='{"active": currCategory=="Fair"}'>
+                        <a class="nav-link" (click)='setCategory("Fair")'>Fair</a>
+                    </li>
+                    <li class="nav-item" [ngClass]='{"active": currCategory=="Seminar"}'>
+                        <a class="nav-link"  (click)='setCategory("Seminar")'>Seminar</a>
+                    </li>
+                
+                
+                </ul>  -->
+                <!-- Links -->
+
+                <div class="form-group my-0 mr-3">
+               
+                    <select class="form-control " id="sel1"  [(ngModel)]='criteria' >
+                
+                      <option value='future'>Future Events</option>
+                      <option value='all'>All Events</option>
+                
+                    </select>
+                  </div>
+
+                <div class="form-group my-0 mr-3">
+               
+                    <select class="form-control " id="sel1"  [(ngModel)]='grad' >
+                      <option selected >EveryCity</option>
+                      <option *ngFor='let g of gradovi' >{{g}}</option>
+                
+                    </select>
+                  </div>
+
+                <form class="form-inline mx-1" (click)='getEventsCity()'>
+                    <div class="md-form my-0 text-white card-common ">
+                        <i class="fas  fa-search"></i>
+                    </div>
+                </form>
+
+            </div>
+            <!-- Collapsible content -->
+
+        </nav>
+        <!--/.Navbar-->
+
+
+       <!--Section: Products v.3-->
+ <section class="text-center  mb-4">
+
+
+    <!--Grid row-->
+    <div *ngFor='let d of dogadjaji  ;let  i=index'  class="row wow fadeIn ">
+        
+        <div class="col-1"></div>
+       <!--Grid column-->
+       <div class="col-lg-10 col-md-10 col-sm-10 mb-4 bg-warning" style='opacity: 90%'>
+
+           <!--Card-->
+           <div class="card" >
+
+               <!--Card image-->
+               <!-- <div class="view overlay">
+                   <img  [(src)]="p.slikaShow" width="258px" height="170px"
+                       class="card-img-top" alt="No Image Available">
+                   <a>
+                       <div class="mask rgba-white-slight"></div>
+                   </a>
+               </div> -->
+               <!--Card image-->
+
+               <!--Card content-->
+               <div class="card-body text-center">
+                   <!--Category & Title-->
+                 <h5>  <strong>
+                    <a href="#demo" data-toggle="collapse" class='grey-text'
+                    style="font-size: x-large; background-color: transparent;"> {{d.naziv}}</a>
+                    <div id="demo" class="collapse" style="font-size: large;">
+                       <p class="mt-2">
+                           {{d.opis}}
+                       </p> 
+    
+                      </div>
+                   
+                   </strong>
+                 </h5>
+                   <h5 class="dark-grey-text">
+                       <strong>
+                           {{d.lokacija}}
+                           
+                       </strong>
+                   </h5>
+
+                   <h5  class="grey-text">
+                     {{d.datumPocetka |  date:'medium'}} - {{d.datumKraja |  date:'medium'}} 
+                   </h5>
+
+                  
+                      <h5  class="grey-text">
+                    Hosted By:  <a *ngIf='!isMe(d.pcelar?.id)' href='/../pcelardetails/{{d.pcelar?.id }}'  class="text-primary">{{d.pcelar?.ime }} {{d.pcelar?.prezime }}  </a>
+                    <i *ngIf='!isSubscribed(d.pcelar?.id) && !isMe(d.pcelar?.id)'  (click)='subscribe(d.pcelar.id)'  class="fas fa-user-plus ml-2"  data-toggle="tooltip" title="Click to follow."></i>
+                    <i *ngIf='isSubscribed(d.pcelar?.id) && !isMe(d.pcelar?.id)' (click)='unsubscribe(d.pcelar.id)'   class="fas fa-user-check ml-2"  data-toggle="tooltip" title="Following. Click to unfollow."></i>
+                                <a *ngIf='isMe(d.pcelar?.id)'  href='/../pcelardetails/{{d.pcelar?.id }}'  class="text-primary">Me</a>
+                </h5> 
+                  
+                   
+
+
+               </div>
+               <!--Card content-->
+
+           </div>
+           <!--Card-->
+
+       </div>
+       <!--Grid column-->
+
+
+   </div>
+   <!--Grid row-->
+
+    <!-- if products empty then display a message-->
+    <div *ngIf="dogadjaji?.length == 0" class="alert alert-warning col-md-12" role="alert">
+       No events found.
+   </div>
+
+
+</section>
+<!--Section: Products v.3-->
+
+<!--Pagination-->
+<nav  class="d-flex justify-content-center wow fadeIn pb-5">
+    <div style="text-align: center;">
+        <ngb-pagination [(page)]='thePageNumber' [pageSize]='thePageSize'
+            [collectionSize]='theTotalElements'
+            (pageChange)='getEventsCity()'>
+ 
+        </ngb-pagination>
+    </div>
+ </nav>
+ <!--Pagination-->
+
+
+    </div>
+</main>
+<!--Main layout-->
+
+
+
+ 
+<!-- <ul class="navbar-nav mr-auto pt-1">
+    <li class="nav-item " [ngClass]='{"active": currCategory=="All"}'>
+        <a class="nav-link" (click)='setCategory("All")'>All
+            <span class="sr-only">(current)</span>
+        </a>
+    </li>
+    <li class="nav-item " [ngClass]='{"active": currCategory=="Degustation"}'>
+        <a class="nav-link"  (click)='setCategory("Degustation")'>Degustation
+            
+        </a>
+    </li>
+    <li class="nav-item" [ngClass]='{"active": currCategory=="Fair"}'>
+        <a class="nav-link" (click)='setCategory("Fair")'>Fair</a>
+    </li>
+    <li class="nav-item" [ngClass]='{"active": currCategory=="Seminar"}'>
+        <a class="nav-link"  (click)='setCategory("Seminar")'>Seminar</a>
+    </li>
+
+
+</ul> -->

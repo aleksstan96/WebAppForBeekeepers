@@ -1,0 +1,64 @@
+
+
+                <!--Section: Products v.3-->
+                <section class="text-center mb-4 ml-5">
+                    <span>
+
+                        <!--Grid row-->
+                        <div *ngFor='let in of counter(gridDuzina) ;let i = index' class="row">
+                            <div *ngFor='let in of counter(gridSirina) ;let j = index'>
+                                <!--Grid column 1-->
+                                <div class="col-lg-1 col-md-1 mb-1 text-center">
+                                    <!--Card-->
+                                    <div class="card card-common text-center">
+                                        <!--Card content-->
+                                        <div class="card-body text-center ml-4">
+                                            <div class="row" style="color: rgb(255, 204, 0);">
+                                                <i class="fas fa-archive fa-2x card-common"
+                                                    (click)='kosnicaEdit(i*10+j+1)'></i>
+                                            </div>
+                                            <div class="row " style="justify-content: center;">
+                                                {{i*10+j+1}}
+                                            </div>
+                                        </div>
+                                        <!--Card content-->
+                                    </div>
+                                    <!--Card-->
+                                </div>
+                                <!--Grid column 1-->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div *ngFor='let in of counter(gridOstatak) ;let i = index'>
+                                <!--Grid column 1-->
+                                <div class="col-lg-1 col-md-1 mb-1 text-center">
+                                    <!--Card-->
+                                    <div class="card card-common">
+                                        <!--Card content-->
+                                        <div class="card-body text-center ml-4 ">
+                                            <div class="row" style="color: rgb(255, 204, 0);">
+                                                <i class="fas fa-archive fa-2x card-common "
+                                                    (click)='kosnicaEdit(gridDuzina*gridSirina + i +1)'></i>
+                                            </div>
+                                            <div class="row " style="justify-content: center; ">
+
+                                                {{gridDuzina*gridSirina + i +1}}
+                                            </div>
+                                        </div>
+                                        <!--Card content-->
+                                    </div>
+                                    <!--Card-->
+                                </div>
+                                <!--Grid column 1-->
+                            </div>
+                        </div>
+                    </span>
+                </section>
+                <!--Section: Products v.3-->
+
+                <section class="text-left mb-4 ml-5" *ngIf='currKosnica!=0'>
+                    <hr>
+                    {{currKosnica}}
+
+                </section>
+

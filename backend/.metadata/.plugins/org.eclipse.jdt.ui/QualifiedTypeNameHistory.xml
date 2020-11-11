@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="com.example.demo.entity.Porudzbina"/>
+<fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
+<fullyQualifiedTypeName name="com.example.demo.dao.PcelarRepository"/>
+<fullyQualifiedTypeName name="com.example.demo.entity.Pcelar"/>
+<fullyQualifiedTypeName name="com.example.demo.dao.ZahtevRepository"/>
+<fullyQualifiedTypeName name="com.example.demo.entity.Zahtev"/>
+<fullyQualifiedTypeName name="com.example.demo.entity.User"/>
+<fullyQualifiedTypeName name="com.example.demo.dao.KupacRepositroy"/>
+<fullyQualifiedTypeName name="com.example.demo.entity.Kupac"/>
+<fullyQualifiedTypeName name="com.example.demo.dao.UserRepository"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.example.demo.dao.SubscriptionRepository"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.awt.print.Pageable"/>
+<fullyQualifiedTypeName name="com.example.demo.entity.Subscription"/>
+</qualifiedTypeNameHistroy>

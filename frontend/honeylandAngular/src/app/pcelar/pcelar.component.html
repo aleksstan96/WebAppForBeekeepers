@@ -1,0 +1,83 @@
+
+
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark ">
+    <button class="navbar-toggler ml-auto mb-2 bg-dark" type="button" data-toggle="collapse" data-target="#myNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-dark" id="myNavbar">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- sidebar -->
+          <div class="col-xl-2 col-lg-2 col-md-4 sidebar fixed-top text-dark">
+            <a href="#" class="  navbar-brand text-white d-block mx-auto naslov text-center py-3 mb-4 bottom-border" >Honeyland <span class="iconify dark" data-icon="mdi-bee-flower" data-inline="false" style="color: dark;" data-width="30" data-height="30"></span></a>
+            <div class="bottom-border pb-3">
+                <img src="" width="50" class="rounded-circle mr-3">
+              <a href="#" class="text-dark" style="font-weight: bold; font-size: large;">Ime Prezime</a>
+            </div>
+            <ul class="navbar-nav flex-column mt-4" >
+                <li class="nav-item text-dak"  style="font-weight: bold; font-size: large;"><a #dugme1 routerLink='1/pcelinjaci' (click)='fokus(1)'  [ngClass]="{'current' : buttonId==1}" class="nav-link  text-dark p-3 mb-2 sidebar-link "><span  class="iconify mr-3 text-warning" data-icon="mdi:beehive-outline" data-inline="false" style="color: white;" data-width="22" data-height="25" ></span>Apiaries</a></li>
+                <li class="nav-item"  style="font-weight: bold; font-size: large;"><a #dugme2 routerLink="1/planer" (click)='fokus(2)'  [ngClass]="{'current' : buttonId==2}" class="nav-link text-dark p-3 mb-2 sidebar-link"><i class="far fa-calendar-alt  fa-lg mr-3 text-warning"></i>Scheduler</a></li>                
+                <li class="nav-item"  style="font-weight: bold; font-size: large;"><a #dugme3  (click)='fokus(3)' [ngClass]="{'current' : buttonId==3}" class="nav-link text-dark p-3 mb-2 sidebar-link"><span class="iconify mr-2 text-warning" data-icon="bx-bx-hive" data-inline="false" style="color: white;" data-width="27" data-height="28" data-rotate="180deg"></span>My Products</a></li>
+                <li class="nav-item"  style="font-weight: bold; font-size: large;"><a #dugme4 (click)='fokus(4)' [ngClass]="{'current' : buttonId==4}" class="nav-link text-dark p-3 mb-2 sidebar-link"><i class="fas fa-user fa-lg mr-3 text-warning"></i>My Profile</a></li>
+                <!-- <li class="nav-item"  style="font-weight: bold; font-size: large;"><a #dugme5 (click)='fokus($event)' class="nav-link text-dark p-3 mb-2 sidebar-link"><i class="fas fa-envelope  fa-lg mr-3 text-warning"></i>Mail</a></li> -->
+                <li class="nav-item"  style="font-weight: bold; font-size: large;"><a #dugme6 (click)='fokus(5)' [ngClass]="{'current' : buttonId==5}" class="nav-link text-dark p-3 mb-2 sidebar-link"><i class="fas fa-shopping-cart fa-lg mr-3 text-warning"></i>Shop</a></li>
+                <li class="nav-item"  style="font-weight: bold; font-size: large;"><a #dugme7 (click)='fokus(6)' [ngClass]="{'current' : buttonId==6}" class="nav-link text-dark p-3 mb-2 sidebar-link"><i class="fas fa-chart-line  fa-lg mr-3 text-warning"></i>Sales Stats</a></li>
+                <li class="nav-item"  style="font-weight: bold; font-size: large;"><a #dugme8 (click)='fokus(7)' [ngClass]="{'current' : buttonId==7}" class="nav-link text-dark p-3 mb-2 sidebar-link"><i class="fas fa-calculator fa-lg mr-3 text-warning"></i>Tools</a></li>
+                <!-- <li class="nav-item"><a href="#" class="nav-link text-dark p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Pomoć</a></li>
+             -->
+              </ul>
+          </div>
+      
+          
+          <!-- end of sidebar -->
+
+             <!-- top-nav -->
+             <div class="col-xl-10 col-lg-9 col-md-8 ml-auto header fixed-top py-2 top-navbar">
+              <div class="row align-items-center">
+                <div class="col-md-4">
+                  
+                </div>
+                <div class="col-md-5">
+               
+                </div>
+                <div class="col-md-3">
+                  <ul class="navbar-nav">
+                    
+                     <li class="nav-item ml-md-auto "><a href="#"  class="nav-link" data-toggle="modal" data-target="#sign-out"><div class="text-danger">Logout <i class="fas fa-sign-out-alt  fa-lg"></i></div></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- end of top-nav -->
+  
+ 
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- end of navbar -->
+
+       <!-- modal -->
+    <div class="modal fade" id="sign-out">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Want to leave?</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            Press logout to leave
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Stay Here</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of modal -->
+
+
+
+   <router-outlet></router-outlet>

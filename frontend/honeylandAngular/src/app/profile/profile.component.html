@@ -1,0 +1,364 @@
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
+
+<div class="container-fluid" style="display: flex; " >
+
+  <div class="row"
+    style="box-sizing:content-box; width: 100%;  margin-left: -2.80rem; margin-right: -0.5rem; ">
+    <div class="col-12">
+      <!--        <div class="row pt-md-4 mt-md-3 mb-5"> -->
+
+      <header style='width: 1110px;'>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+
+            <li *ngFor='let img of galleryImagesShow; let i=index' data-target="#carouselExampleIndicators"
+              attr.data-slide-to="{{i+1}}"></li>
+
+            <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> -->
+          </ol>
+          <div class="carousel-inner " role="listbox">
+
+
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active" style='margin-top: -4rem;'>
+              <!-- <div class="carousel-item active" style="background-image: url('/../assets/images/pcelinjak3.jpg')"> -->
+              <div class="carousel-caption  d-md-block ">
+                <!-- <i class="fas fa-images">ovde ce se nalaziti galerija slika...</i> -->
+                <!-- <img src="/../assets/images/profile.jpg" height="200" width="200" class="d-block mx-auto border border-dark rounded-circle mr-3"> -->
+                <img class="rounded-circle z-depth-2" width="240px" height="240px" alt="No Picture Available"
+                  [src]="profilePicture" data-holder-rendered="true" style="margin-top: -2rem;"><a><i
+                    class=" text-dark card-common fas fa-edit" data-toggle="tooltip" title="Change profile picture"
+                    (click)='showEditPictureModal()' style='margin-left: -1.5rem;'></i></a>
+                <h2 class="display-4">{{pcelar.ime }} {{pcelar.prezime}}</h2>
+                <div class="container">
+
+                  <a href="#demo" data-toggle="collapse" class='text-muted'
+                    style="font-size: xx-large; background-color: transparent;">About You</a>
+                  <a style="background-color: transparent;" data-toggle="tooltip" title="Edit"><i
+                      class="ml-4 mr-2 card-common text-white fas fa-2x fa-edit" (click)='showEditModal()'
+                      style='padding-bottom:10px'></i>
+                  </a>
+                  <a style="background-color: transparent;" (click)='showAddPictureModal()'  data-toggle="tooltip" title="Add picture to Gallery"><span
+                      class="card-common iconify pb-2" data-icon="bx:bx-image-add"
+                      data-inline="false" style="color: white;" data-width="52" data-height="52"></span></a>
+                  <div id="demo" class="collapse" style="font-size: large; margin-bottom: 3rem;">
+                    <p *ngIf='user.username'>
+                      <strong>Username: </strong> {{user.username}}
+                    </p>
+
+                    <p *ngIf='pcelar.datumRodjenja'>
+                      <strong>Date of Birth: </strong> {{pcelar.datumRodjenja | date}}
+                    </p>
+                    <p *ngIf='pcelar.adresa'>
+                      <strong>Adress: </strong>{{pcelar.adresa}}
+                    </p>
+                    <p *ngIf='pcelar.telefon'>
+                      <strong>Phone Number: </strong> {{pcelar.telefon}}
+                    </p>
+                    <p *ngIf='pcelar.email'>
+                      <strong>Email: </strong>{{pcelar.email}}
+                    </p>
+                    <p *ngIf='pcelar.aboutMe'>
+                      <strong>About Me: </strong>{{pcelar.aboutMe}}
+                    </p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide Two - Set the background image for this slide in the line below -->
+
+
+            <div *ngFor='let img of galleryImagesShow; let i=index' class="carousel-item"
+            [style.background]="'url(' + img + ') no-repeat '"  [style.width.px]="1110" [style.height.px]="600">
+              <div class="carousel-caption d-none d-md-block">
+                <!-- <h2 class="display-4">Second Slide</h2>
+                <p class="lead">This is a description for the second slide.</p> -->
+              </div>
+            </div>
+
+
+
+            <!-- Slide Three - Set the background image for this slide in the line below -->
+            <!-- <div class="carousel-item" style="background-image: url('/../assets/images/pcelinjak2.jpg')">
+              <div class="carousel-caption d-none d-md-block">
+                <h2 class="display-4">Third Slide</h2>
+                <p class="lead">This is a description for the third slide.</p>
+              </div>
+            </div> -->
+
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Page Content
+                  <section class="py-5">
+                    <div class="container">
+                      <h1 class="display-4">Full Page Image Slider</h1>
+                      <p class="lead">The background images for the slider are set directly in the HTML using inline CSS. The images in this snippet are from <a href="https://unsplash.com">Unsplash</a>, taken by <a href="https://unsplash.com/@joannakosinska">Joanna Kosinska</a>!</p>
+                    </div>
+                  </section> -->
+
+      <!--  </div>-->
+    </div>
+  </div>
+</div>
+
+
+<!--Edit profile modal-->
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+  <div class="modal-dialog ">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title ml-1 ">About You</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideEditModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container-fluid">
+          <div class="row centered-form">
+            <!-- <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4"> -->
+            <div class="panel panel-default text-white">
+
+              <div class="panel-body">
+                <div *ngIf="clicked && razliciteLozinke" class="alert alert-danger form-group">
+                  Confirmed password is different from original.
+                </div>
+                <div class="row">
+
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="text" [(ngModel)]="pcelar.ime" placeholder="First Name" #name="ngModel" required
+                        class="form-control input-sm">
+
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="text" [(ngModel)]="pcelar.prezime" #prezime="ngModel" placeholder="Last Name"
+                        required class="form-control input-sm">
+                    </div>
+
+                  </div>
+                </div>
+                <div *ngIf="usernamePostoji" class="alert alert-danger form-group">
+                  This username already exists, please choose another one.
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="text" placeholder="Username" [(ngModel)]="user.username" #username="ngModel" required
+                        class="form-control input-sm">
+
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <textarea placeholder="About me" [(ngModel)]='pcelar.aboutMe' class="form-control input_pass">
+
+                                            </textarea>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="password" placeholder="Password" [(ngModel)]="user.password" #password="ngModel"
+                        required [pattern]="regex" class="form-control input-sm">
+                      <div *ngIf="password.invalid &&  clicked" class="alert alert-danger">
+                        <div *ngIf="password.errors?.pattern">
+                          Password must contain at least 8 characters: at least 1 uppercase
+                          letter, 1 lowercase letter, and 1 number.
+                          Can contain special characters.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="password" [(ngModel)]="passwordReplica" placeholder="Confirm password"
+                        (input)="razliciteLozinke=false" #potvrda="ngModel" required class="form-control input-sm">
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="date" placeholder="Date of Birth" [(ngModel)]="pcelar.datumRodjenja " #datum="ngModel"
+                        required class="form-control input-sm">
+
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="text" placeholder="Address" [(ngModel)]="pcelar.adresa" #mesto="ngModel" required
+                        class="form-control input-sm">
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="tel" placeholder="Phone Number" [(ngModel)]="pcelar.telefon" #telefon="ngModel"
+                        required class="form-control input-sm">
+
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="email" placeholder="Email" [(ngModel)]="pcelar.email" #email="ngModel" required
+                        class="form-control input-sm">
+
+                    </div>
+                  </div>
+
+                </div>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="hideEditModal()">Cancel</button>
+        <button type="button" class="btn btn-warning" (click)="save(password.errors?.pattern)">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--/Edit profile modal-->
+
+
+
+<!--edit picture modal -->
+<div bsModal #editPictureModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="dialog-child-name">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title ml-1">Change Profile Picture</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideEditPictureModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class=" row py-1">
+          <div class="col-6">
+            <div>
+
+              <img style="width: 240px; height: 240px;" [(src)]="profilePicture">
+            </div>
+
+          </div>
+          <div class="col-6">
+            <div class=" row py-1">
+              <div class="col">
+                <h4>Add Image</h4>
+              </div>
+            </div>
+            <div class=" row">
+              <div class="col">
+                <input type="file" (change)="onFileChanged($event)">
+              </div>
+            </div>
+            <!-- <div class='row'>
+                          <div class="col">
+                              <input type="button" (click)="onUpload()" value="Upload">
+                          </div>
+                      </div> -->
+            <hr />
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="hideEditPictureModal()">Cancel</button>
+        <button type="button" class="btn btn-warning" (click)="editProfilePicture()">Change</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- end of edit picture modal -->
+
+<!--add picture modal -->
+
+<div bsModal #addPictureModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-white">
+          <div class="modal-header">
+              <h4 id="dialog-child-name" class="modal-title ml-1">Add Image to Your Gallery</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="hideAddPictureModal()">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class=" row py-1">
+                  <div class="col-6">
+                      <div>
+
+                          <img style="width: 286px; height: 180px;" [(src)]="imageShow">
+                      </div>
+
+                  </div>
+                  <div class="col-6">
+                      <div class=" row py-1">
+                          <div class="col">
+                              <h4>Add Image</h4>
+                          </div>
+                      </div>
+                      <div class=" row">
+                          <div class="col">
+                              <input type="file" (change)="onFileChanged1($event)">
+                          </div>
+                      </div>
+                      <!-- <div class='row'>
+                          <div class="col">
+                              <input type="button" (click)="onUpload()" value="Upload">
+                          </div>
+                      </div> -->
+                      <hr />
+                  </div>
+
+              </div>
+              
+
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="hideAddPictureModal()">Cancel</button>
+              <button type="button" class="btn btn-warning" (click)="addPicture()">Add</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- end of add picture modal -->

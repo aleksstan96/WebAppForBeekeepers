@@ -1,0 +1,83 @@
+<div class="flex-column"
+    style="display: flex; overflow-x:hidden;   background-image: url(/../assets/images/dark1.jpg);">
+
+    <div class="header row" stle="box-sizing:content-box; width: 100%; ">
+        <div class='col-3 flex-container' style='justify-content: flex-start'>
+            <a href="pcelar" class="navbar-brand text-white naslov py-2 pl-5 ">Honeyland <span class="iconify dark"
+                    data-icon="mdi-bee-flower" data-inline="false" style="color: dark;" data-width="30"
+                    data-height="30"></span></a>
+        </div>
+        <div class='col-9 flex-container' style='justify-content: flex-end;'>
+            <a href="" (click)='logout()' class="nav-link" style='align-self: center;' data-toggle="modal" data-target="#sign-out">
+                <div style="color: rgb(185, 55, 42);">Logout <i class="fas fa-sign-out-alt  fa-lg"></i></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row  " style="box-sizing:content-box; width: 100%; max-height: 600px;">
+
+        <div class="col-xl-2 col-lg-2 col-md-4 d-flex flex-column sidebar"
+            style="box-sizing:content-box; width: 100%; ">
+            <div class="navbar navbar-expand-md mx-auto navbar-dark" style=" box-sizing:content-box; width:100%">
+                <button class="navbar-toggler ml-auto mb-2 bg-dark" type="button" data-toggle="collapse"
+                    data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-dark flex-column"
+                    style="box-sizing:content-box; width: 100%; height: 600px;" id="myNavbar">
+                    <!-- sidebar -->
+                    <div class="bottom-border pt-3 pb-3" style="box-sizing:content-box; width: 100%;">
+                        <img [src]='profilePicture' width="50"
+                            class="rounded-circle mr-2">
+                        <a href="pcelar/{{pcelarId}}/profil" class="text-dark" style=" font-size: large; font-weight: 400;">{{pcelar.ime}} {{pcelar.prezime}}</a>
+                    </div>
+                    <ul class="navbar-nav flex-column" style='box-sizing:content-box; width: 100%; font-weight: 400;'>
+                        <li class="nav-item" style="box-sizing: content-box; width: 100%;  font-size: large;"><a #dugme1
+                                routerLink='{{pcelarId}}/pcelinjaci' (click)='fokus(1)' [ngClass]="{'current' : buttonId==1}"
+                                class="nav-link text-dark py-3 mb-2 sidebar-link "><span
+                                    class="iconify mr-3 ml-3 text-warning" data-icon="mdi:beehive-outline"
+                                    data-inline="false" style="color: white;" data-width="22"
+                                    data-height="25"></span>Apiaries</a></li>
+                        <li class="nav-item" style="box-sizing: content-box; width: 100%;  font-size: large;"><a #dugme2
+                                routerLink="{{pcelarId}}/planer" (click)='fokus(2)' [ngClass]="{'current' : buttonId==2}"
+                                class="nav-link text-dark py-3 mb-2 sidebar-link"><i
+                                    class="far fa-calendar-alt  fa-lg mr-3 ml-3 text-warning"></i>Scheduler</a></li>
+                        <li class="nav-item" style="box-sizing: content-box; width: 100%; ; font-size: large;"><a
+                                #dugme3 routerLink="{{pcelarId}}/products" (click)='fokus(3)' [ngClass]="{'current' : buttonId==3}"
+                                class="nav-link text-dark py-3 mb-2 sidebar-link"><span
+                                    class="iconify mr-2 ml-3 text-warning" data-icon="bx-bx-hive" data-inline="false"
+                                    style="color: white;" data-width="28" data-height="28"
+                                    data-rotate="180deg"></span>My Products</a></li>
+                        <li class="nav-item" style="box-sizing: content-box; width: 100%; ; font-size: large;"><a
+                                #dugme4 routerLink="{{pcelarId}}/profil" (click)='fokus(4)' [ngClass]="{'current' : buttonId==4}"
+                                class="nav-link text-dark py-3 mb-2 sidebar-link"><i
+                                    class="fas fa-user fa-lg mr-3 ml-3 text-warning"></i>My Profile</a></li>
+
+                        <li class="nav-item" style="box-sizing: content-box; width: 100%; font-size: large;"><a #dugme7
+                                routerLink="{{pcelarId}}/sales" (click)='fokus(6)' [ngClass]="{'current' : buttonId==6}"
+                                class="nav-link text-dark py-3 mb-2 sidebar-link"><i
+                                    class="fas fa-chart-line  fa-lg mr-3 ml-3 text-warning"></i>Sales Stats</a></li>
+                        <li class="nav-item" style="box-sizing: content-box; width: 100%; ; font-size: large;"><a
+                                #dugme8 routerLink="{{pcelarId}}/tools" (click)='fokus(7)' [ngClass]="{'current' : buttonId==7}"
+                                class="nav-link text-dark py-3 mb-2 sidebar-link"><i
+                                    class="fas fa-calculator fa-lg mr-3 ml-3 text-warning"></i>Tools</a></li>
+                        <li class="nav-item" style="box-sizing: content-box; width: 100%; ; font-size: large;"><a
+                                #dugme6 routerLink="../shop" (click)='fokus(5)' [ngClass]="{'current' : buttonId==5}"
+                                class="nav-link text-dark py-3 mb-2 sidebar-link"><i
+                                    class="fas fa-shopping-cart fa-lg mr-3 ml-3 text-warning"></i>Shop</a></li>
+
+                    </ul>
+
+
+                    <!-- end of sidebar -->
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-9 text-white " style="box-sizing:content-box; width: 100%; max-height: 100%;">
+            <router-outlet class="" style="overflow: auto"></router-outlet>
+        </div>
+    </div>
+
+</div>

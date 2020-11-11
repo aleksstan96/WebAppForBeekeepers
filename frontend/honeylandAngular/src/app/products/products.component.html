@@ -1,0 +1,300 @@
+<div class="container-fluid" style="box-sizing: content-box; width:100%;">
+    <div class="row row mt-3 ml-3">
+        <div class="col-9"></div>
+        <div class="col-3">
+            <button class='btn btn-lg btn-warning ml-4 card-common' (click)='showDodajProizvodModal()'>Add
+                Product</button>
+        </div>
+
+    </div>
+    <div class="row mt-3 mb-5 ml-5"
+        style="flex-direction: row; flex-wrap: wrap;align-items: center; align-content: stretch;">
+        <div *ngFor='let p of proizvodi; let i=index'>
+            <div class="card card-common text-dark my-2 mx-2"
+                style="width: 18rem; background-color: rgba(252, 192, 69, 0.7) ;">
+                <div class="mdb-card-header">
+                    <div class="row">
+                        <div class="col-9" style="margin-right: -0.5rem;"></div>
+                        <div class="col-xl-1 col-sm-1 py-2 ">
+                            <i class="fas fa-edit little-button" (click)='showEditModal(p)'
+                                style="font-size:large;"></i>
+                            <!-- <i class="far fa-trash-alt mr-1" style="font-size: x-large;"></i> -->
+                        </div>
+                        <div class="col-xl-1 col-sm-1 py-2">
+                            <!-- <i class="fas fa-edit mr-4" style="font-size: x-large;"></i>  -->
+                            <i class="far fa-trash-alt  little-button" (click)='showDeleteModal(p)'
+                                style="font-size:large"></i>
+                        </div>
+                    </div>
+
+                </div>
+                <img class="card-img-top" style="width: 286px; height: 180px;" [src]="p.slikaShow" alt="No Picture Available">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 400;">{{p.naziv}}</h5>
+                    <!-- <p class="card-text"><span>Kategorija: </span>{{p.kategorija}}</p>-->
+                    <p class="card-text">{{p.info}}</p>
+                    <p class="card-text">{{p.cena}} din</p>
+                    <!-- <a href="#" class="btn btn-warning">Edit </a>
+                    <a href="#" class="btn btn-danger mx-1" >Delete </a> -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <div class="col-1 ml-5" data-toggle="modal" data-target="#add">
+            <div class="card card-common1 bg-warning mt-0 " (click)='showDodajProizvodModal()'
+                style="width: 80px; align-items: center;  color: white">
+                <div class="card-body text-dark">
+                    <i class="fas fa-plus fa-2x "></i>
+                </div>
+            </div>
+        </div> -->
+
+
+
+    </div>
+
+    <nav class="d-flex justify-content-center wow fadeIn pb-5">
+        <div style="text-align: center;">
+            <ngb-pagination [(page)]='thePageNumber' [pageSize]='thePageSize'
+                [collectionSize]='theTotalElements'
+                (pageChange)='getAllProducts()'>
+
+            </ngb-pagination>
+        </div>
+    </nav>
+
+</div>
+
+
+
+<!-- SLIKA UPLOAD -->
+<!-- <div class="container row">
+    <div class="col-md-12">
+        <h1>Upload Image</h1>
+    </div>
+</div>
+<div class="container row">
+    <div class="col-md-6">
+        <input type="file" (change)="onFileChanged($event)">
+    </div>
+    
+    <div class="col-md-6">
+        <input type="button" (click)="onUpload()" value="upload">
+    </div>
+</div>
+<hr />
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=message>{{message}}</div>
+    </div>
+</div>  -->
+<!-- <div class="container row">
+    <div class="col-md-6">
+        <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+            name="name" />
+    </div>
+    <div class="col-md-6">
+        <input type="button" (click)="getImage()" value="Get Image">
+    </div>
+</div>
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=retrievedImage>
+            <img [src]="retrievedImage">
+        </div>
+    </div>
+</div>
+<!-- END SLIKA UPLOAD -->
+
+
+<!--MODALI-->
+
+<!--edit modal -->
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h4 id="dialog-child-name" class="modal-title ml-1">Edit Product</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideEditModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class=" row">
+                    <div class="col-6">
+                        <div>
+
+                            <img style="width: 286px; height: 180px;" [(src)]="imageShow">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class=" row py-1">
+                            <div class="col">
+                                <h4>Change Image</h4>
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div class="col">
+                                <input type="file" (change)="onFileChanged($event)">
+                            </div>
+                        </div>
+                        <!-- <div class='row'>
+                            <div class="col">
+                                <input type="button" (click)="onUpload()" value="Upload">
+                            </div>
+                        </div> -->
+                        <hr />
+                    </div>
+
+                </div>
+                <div class="row py-1">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        Product Name
+                        <input type="text" [(ngModel)]="currEditProizvod.naziv" class="form-control input-sm">
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        Product Category
+                        <select type="text" [(ngModel)]="currEditProizvod.kategorija" class="form-control input-sm">
+                            <option value='Honey'>Honey</option>
+                            <option value='Propolis'>Propolis</option>
+                            <option value='Pollen'>Pollen</option>
+                            <option value='Beeswax'>Beeswax</option>
+                            <option value='Royal Jelly'>Royal Jelly</option>
+                            <option value='Other'>Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        Product Info
+                        <textarea type="text" [(ngModel)]="currEditProizvod.info"
+                            class="form-control input-sm"></textarea>
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        Product Price
+                        <input type="number" [(ngModel)]="currEditProizvod.cena" class="form-control input-sm">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="hideEditModal()">Cancel</button>
+                <button type="button" class="btn btn-warning" (click)="saveEditedProizvod()">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end of edit modal -->
+
+<!--delete modal -->
+<div bsModal #deleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+    <div class="modal-dialog ">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h4 id="dialog-child-name" class="modal-title ml-1">Delete Product</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideDeleteModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete {{currDeleteProizvod.naziv}}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="hideDeleteModal()">Cancel</button>
+                <button type="button" class="btn btn-warning" (click)="deleteProizvod()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end of delete modal -->
+
+
+<!--add modal -->
+<div bsModal #addModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h4 id="dialog-child-name" class="modal-title ml-1">Add Product</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideDodajProizvodModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class=" row py-1">
+                    <div class="col-6">
+                        <div>
+
+                            <img style="width: 286px; height: 180px;" [(src)]="imageShow">
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+                        <div class=" row py-1">
+                            <div class="col">
+                                <h4>Add Image</h4>
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div class="col">
+                                <input type="file" (change)="onFileChanged($event)">
+                            </div>
+                        </div>
+                        <!-- <div class='row'>
+                            <div class="col">
+                                <input type="button" (click)="onUpload()" value="Upload">
+                            </div>
+                        </div> -->
+                        <hr />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        Product Name
+                        <input type="text" [(ngModel)]="currAddProizvod.naziv" class="form-control input-sm">
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        Product Category
+                        <select type="text" (value)="currAddProizvod.kategorija" class="form-control input-sm">
+                            <option value="Honey">Honey</option>
+                            <option value="Propolis">Propolis</option>
+                            <option value="Pollen">Pollen</option>
+                            <option value="Royal Jelly">Royal Jelly</option>
+                            <option value="Beeswax">Beeswax</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        Product Info
+                        <textarea type="text" [(ngModel)]="currAddProizvod.info"
+                            class="form-control input-sm"></textarea>
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        Product Price
+                        <input type="number" [(ngModel)]="currAddProizvod.cena" class="form-control input-sm">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="hideDodajProizvodModal()">Cancel</button>
+                <button type="button" class="btn btn-warning" (click)="dodajProizvod()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end of add modal -->

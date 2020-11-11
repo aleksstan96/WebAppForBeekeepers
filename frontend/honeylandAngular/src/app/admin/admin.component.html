@@ -1,0 +1,131 @@
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar bg-dark">
+    <div class="container">
+
+        <!-- Brand -->
+        <a href="admin" class="navbar-brand text-white naslov ">Honeyland <span class="iconify dark"
+                data-icon="mdi-bee-flower" data-inline="false" style="color: dark;" data-width="30"
+                data-height="30"></span></a>
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active">
+            <a class="nav-link waves-effect" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li> -->
+                <!-- <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Free download</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free tutorials</a>
+          </li> -->
+            </ul>
+
+            <!-- Right -->
+            <ul class="navbar-nav nav-flex-icons ">
+
+                <!-- 
+                <li class="nav-item">
+                    <a class="nav-link waves-effect">
+                        <span class="badge red z-depth-1 mr-1 mb-1"> 1 </span>
+                        <i class="fas fa-shopping-cart text-warning mr-1"></i>
+                        <span class="clearfix d-none d-sm-inline-block text-warning"> Cart </span>
+                    </a>
+                </li> -->
+                <!--        <li class="nav-item">
+            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li> -->
+
+                <li class="nav-item">
+                    <a href="#" (click)='logout()' class="nav-link" style='align-self: center;' data-toggle="modal"
+                        data-target="#sign-out">
+                        <div style="color: rgb(185, 55, 42);">Logout <i class="fas fa-sign-out-alt  fa-lg"></i></div>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+<!-- Navbar -->
+
+<!-- Page Wrapper -->
+<div style="background-image: url('/../assets/images/dark1.jpg'); height: 100%"
+    class="page-holder bg-cover">
+
+    <div class="container py-5">
+
+
+
+        <div class="container">
+            <h2 style="text-align: center;" class="text-white pt-5 pb-2"> Registration Requests</h2>
+
+            <!--tabela-->
+            <table class="table table-hover ">
+                <thead class=" text-dark-50 bg-white lead ">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Date of Birth</th>
+                        <th>Adress</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Accepted/Rejected</th>
+
+                    </tr>
+                </thead>
+                <tbody class=" text-white">
+                    <tr *ngFor="let temp of zahtevi">
+                        <td>{{temp.ime}}</td>
+                        <td>{{temp.prezime}}</td>
+                        <td>{{temp.username}}</td>
+                        <td>{{temp.role}}</td>
+                        <td>{{temp.datumRodjenja | date}}</td>
+                        <td>{{temp.adresa}}</td>
+                        <td>{{temp.telefon}}</td>
+                        <td>{{temp.email}}</td>
+                        <span *ngIf='temp.prihvacen == false && temp.nijePrihvacen == false'>
+                            <td><button class="btn btn-warning" (click)="prihvati(temp.id)">Accept</button></td>
+                            <td><button class="btn btn-danger" (click)="odbij(temp.id)">Reject</button></td>
+                        </span>
+                        <span *ngIf='temp.prihvacen == true && temp.nijePrihvacen == false'>
+                            <td class="text-warning"> Prihvaćen </td>
+                            <td class="text-warning"> <i class="fas fa-check"></i></td>
+                        </span>
+                        <span *ngIf='temp.prihvacen == false && temp.nijePrihvacen == true'>
+                            <td class="text-danger">Odbijen</td>
+                            <td class="text-danger"> <i class="fas fa-times"></i></td>
+                        </span>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+            <!--kraj tabele -->
+
+        </div>
+
+        
+
+
+    </div>
+</div>

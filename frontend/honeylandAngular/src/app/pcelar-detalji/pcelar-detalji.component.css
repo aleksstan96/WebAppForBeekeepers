@@ -1,0 +1,21 @@
+.carousel-item {
+    height: 100vh;
+    min-height: 150px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+
+  
+  .card-common:hover {
+    transform: translateY(-1px);
+  }
+
+  .naslov{
+    font-family: Brush Script Std,  cursive;
+    font-size: 170%;
+    color: white;
+  }

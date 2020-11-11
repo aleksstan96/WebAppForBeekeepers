@@ -1,0 +1,53 @@
+
+  /* cards */
+  .card-common {
+   
+    box-shadow: 1px 2px 5px #999;
+    transition: all .4s;
+  }
+  
+  .card-common:hover {
+    box-shadow: 2px 3px 15px #999;
+    transform: translateY(-1px);
+  }
+
+  .card-common1 {
+   
+    box-shadow: 1px 2px 5px #999;
+    transition: all .4s;
+  }
+
+  .card-common1:hover {
+    background-color: rgba(252, 145, 23, 0.8);
+    box-shadow: 2px 3px 15px #999;
+    transform: translateY(-1px);
+  }
+
+    
+  .little-button {
+   
+    /* box-shadow: 1px 2px 5px #999; */
+    transition: all .4s;
+  }
+  
+  .little-button:hover {
+    box-shadow: 2px 3px 15px #999;
+    transform: translateY(-1px);
+  }
+  
+  ngb-pagination ::ng-deep a {
+    color: white !important;
+  }
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link {
+    border-color: black;
+    background-color: rgb(255, 193, 7);
+  }
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link:focus, .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+  }
+  
+  ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+  }

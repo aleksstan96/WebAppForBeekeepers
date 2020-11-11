@@ -1,0 +1,163 @@
+<script>
+    $(document).ready(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
+  <!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar bg-dark">
+    <div class="container">
+
+        <!-- Brand -->
+        <a *ngIf='role=="b"' href="pcelar" class="navbar-brand text-white naslov ">Honeyland <span class="iconify dark"
+          data-icon="mdi-bee-flower" data-inline="false" style="color: dark;" data-width="30"
+          data-height="30"></span></a>
+
+   <a  *ngIf='role=="c"' href="shop" class="navbar-brand text-white naslov ">Honeyland <span class="iconify dark"
+        data-icon="mdi-bee-flower" data-inline="false" style="color: dark;" data-width="30"
+        data-height="30"></span></a>
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active">
+            <a class="nav-link waves-effect" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li> -->
+                
+            </ul>
+
+            <!-- Right -->
+            <ul  class="navbar-nav nav-flex-icons ">
+              <li *ngIf='role=="c"' class="nav-item">
+                <a class="nav-link waves-effect">
+                <span class="badge red z-depth-1 mr-1 mb-1"> {{myCart.length}} </span>
+                <i class="fas fa-shopping-cart text-warning mr-1"></i>
+                <span class="clearfix d-none d-sm-inline-block text-warning"> Cart </span>
+                </a>
+             </li>
+     
+                <li *ngIf='role=="b"' class="nav-item active">
+                    <a class="nav-link waves-effect text-warning" href="http://localhost:4200/pcelar">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link waves-effect text-warning" href="http://localhost:4200/shop">Shop
+                      <span class="sr-only">(current)</span>
+                  </a>
+              </li>
+                <li *ngIf='role=="c"' class="nav-item active">
+                    <a class="nav-link waves-effect text-warning" href="http://localhost:4200/kupac">Events
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li *ngIf='role=="c"' class="nav-item active">
+                  <a class="nav-link waves-effect text-warning" href="http://localhost:4200/history">History
+                      <span class="sr-only">(current)</span>
+                  </a>
+              </li>
+                <li class="nav-item">
+                    <a href="#" (click)='logout()' class="nav-link" style='align-self: center;' data-toggle="modal"
+                        data-target="#sign-out">
+                        <div style="color: rgb(185, 55, 42);">Logout <i class="fas fa-sign-out-alt  fa-lg"></i></div>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+<!-- Navbar -->
+  
+  <div class="container-fluid  bg-dark" style="display: flex;" >
+  
+    <div class="row "
+      style="box-sizing:content-box; width: 100%;">
+      <div class="col-12">
+  
+        <header style='width: 100%;'>
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+  
+              <li *ngFor='let img of galleryImagesShow; let i=index' data-target="#carouselExampleIndicators"
+                attr.data-slide-to="{{i+1}}"></li>
+            </ol>
+            <div class="carousel-inner " role="listbox">
+  
+  
+              <!-- Slide One - Set the background image for this slide in the line below -->
+              <div class="carousel-item active" >
+                <div class="carousel-caption  d-md-block ">
+                 <img class="rounded-circle z-depth-2" width="240px" height="240px" alt="No Picture Available"
+                    [src]="profilePicture" data-holder-rendered="true" style="margin-top: -2rem;">
+                  <h2 class="display-4">{{pcelar.ime }} {{pcelar.prezime}}
+                    <i *ngIf='!isSubscribed(pcelar?.id)  && !isMe(pcelar?.id)' (click)='subscribe()' class="fas fa-user-plus ml-2" style="font-size: xx-large;"  data-toggle="tooltip" title="Click to follow."></i>
+                    <i *ngIf='isSubscribed(pcelar?.id)  && !isMe(pcelar?.id)' (click)='unsubscribe()' class="fas fa-user-check ml-2" style="font-size: xx-large;"  data-toggle="tooltip" title="Following. Click to unfollow."></i>
+                   
+                  </h2> 
+                  <div class="container">
+  
+                    <a href="#demo" data-toggle="collapse" class='text-muted'
+                      style="font-size: xx-large; background-color: transparent;">About {{pcelar.ime }}</a>
+                     
+                    <div id="demo" class="collapse" style="font-size: large; ">
+           
+                      <p *ngIf='pcelar.datumRodjenja'>
+                        <strong>Date of Birth: </strong> {{pcelar.datumRodjenja | date}}
+                      </p>
+                      <p *ngIf='pcelar.adresa'>
+                        <strong>Adress: </strong>{{pcelar.adresa}}
+                      </p>
+                      <p *ngIf='pcelar.telefon'>
+                        <strong>Phone Number: </strong> {{pcelar.telefon}}
+                      </p>
+                      <p *ngIf='pcelar.email'>
+                        <strong>Email: </strong>{{pcelar.email}}
+                      </p>
+                      <p *ngIf='pcelar.aboutMe'>
+                        <strong>About Me: </strong>{{pcelar.aboutMe}}
+                      </p>
+  
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide Two - Set the background image for this slide in the line below -->
+  
+  
+              <div *ngFor='let img of galleryImagesShow; let i=index' class="carousel-item"
+              [style.background]="'url(' + img + ') no-repeat '" style="margin-top: -1rem;" >
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+              </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </header>
+
+      </div>
+    </div>
+  </div>
+  
+  
+  

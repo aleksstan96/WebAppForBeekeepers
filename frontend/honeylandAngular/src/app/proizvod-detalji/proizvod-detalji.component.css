@@ -1,0 +1,42 @@
+
+.star {
+    position:  relative;
+    display: inline-block;
+    font-size: 2rem;
+    color: #d3d3d3;
+  }
+  .full {
+    color:  rgb(255, 193, 7);
+  }
+  .half {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    color: rgb(255, 193, 7);
+  }
+
+  .naslov{
+    font-family: Brush Script Std,  cursive;
+    font-size: 170%;
+    color: white;
+  }
+
+
+
+
+  .stars {
+    position:  relative;
+    display: inline-block;
+    font-size: 2rem;
+    color:  rgb(255, 193, 7);
+  }
+
+
+  .my-custom-scrollbar {
+    position: relative;
+    height: 500px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
