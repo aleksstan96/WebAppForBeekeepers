@@ -16,6 +16,7 @@ Welcome to **Honeyland**! This is a Spring Boot and Angular 10 web app that help
 ### Login/Registration Page
 
 ![alt text](images/image.png)
+
 ![alt text](images/image-1.png)
 
 _Description: Login and registration pages allow users to log in or register on the app._
@@ -35,7 +36,9 @@ _Description: If you registered as a beekeeper, this page will show an overview 
 _Description: The Apiary page lets you manage your apiaries. You can add, edit and review your apiaries, as well as organize them by managing their hives._
 
 ![alt text](images/image-4.png)
+
 ![alt text](images/image-5.png)
+
 ![alt text](images/image-6.png)
 
 ### Scheduler
@@ -45,8 +48,11 @@ _Description: The Apiary page lets you manage your apiaries. You can add, edit a
 _Description: The Scheduler page allows you to plan and manage important events such as apiary inspection, feeding, harvesting, medical treatments, etc It also allows you to publish social events such as fairs or markets._
 
 ![alt text](images/image-8.png)
+
 ![alt text](images/image-9.png)
+
 ![alt text](images/image-10.png)
+
 ![alt text](images/image-11.png)
 
 ### Products
