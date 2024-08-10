@@ -15,9 +15,9 @@ Welcome to **Honeyland**! This is a Spring Boot and Angular 10 web app that help
 
 ### Login/Registration Page
 
-![alt text](images/image.png)
+![alt text](images/image1.png)
 
-![alt text](images/image-1.png)
+![alt text](images/image1-1.png)
 
 _Description: Login and registration pages allow users to log in or register on the app._
 
@@ -25,7 +25,7 @@ _Description: Login and registration pages allow users to log in or register on 
 
 ### Beekeeper Dashboard
 
-![alt text](images/image-2.png)
+![alt text](images/image1-2.png)
 
 _Description: If you registered as a beekeeper, this page will show an overview of all modules available to you, defaulting to the Apiary page._
 
