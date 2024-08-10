@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to **Honeyland**! This web application, built with Spring Boot and Angular 10, is designed to assist beekeepers in managing their operations and selling their products. In addition to the beekeeping management features, Honeyland includes an E-Commerce platform that allows buyers to easily purchase honey and related products directly from local beekeepers. Upcoming: A tool for automatic detection on hive disease using deep neural networks.
+Welcome to **Honeyland**! This web application, built with Spring Boot and Angular 10, is designed to assist beekeepers in managing their operations and selling their products. In addition to the beekeeping management features, Honeyland includes an E-Commerce platform that allows buyers to easily purchase honey and related products directly from local beekeepers. Upcoming: A tool for automatic detection of hive disease using deep neural networks.
 
 
 ## Features
