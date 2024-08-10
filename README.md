@@ -2,7 +2,8 @@
 
 ## Overview
 
-Welcome to **Honeyland**! This is a Spring Boot and Angular 10 web app that helps beekeepers manage their work and sell their products. In addition, there is also an E-Commerce app for buyers included.
+Welcome to **Honeyland**! This web application, built with Spring Boot and Angular 10, is designed to assist beekeepers in managing their operations and selling their products. In addition to the beekeeping management features, Honeyland includes an E-Commerce platform that allows buyers to easily purchase honey and related products directly from local beekeepers. Upcoming: A tool for automatic detection on hive disease using deep neural networks.
+
 
 ## Features
 
